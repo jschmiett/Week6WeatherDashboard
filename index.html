@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/script.js"></script>
     <title>Document</title>
 </head>
 
@@ -13,9 +12,15 @@
     <form>
         <label for="cityWeatherSearch">Search for a City:</label><br>
         <input type="text" id="cityWeatherSearch" name="cityWeatherSearch"><br><br>
-        <input type="submit" id="citySearchButton"></input>
+        <button type="submit" id="citySearchButton">Search</button>
     </form>
-    <div></div>
+    <div id="todaysForcast">
+        <h2>Today's Forcast</h2>
+    </div>
+
+    <div id="fiveDayForecast">
+    </div>
+    <script src="./assets/js/script.js"></script>
 
 </body>
 
