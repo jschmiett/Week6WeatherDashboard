@@ -1,5 +1,14 @@
 console.log("hello world")
+const getCitySearchHistory = JSON.parse(localStorage.getItem("cityWeatherHistory"));
+// getCitySearchHistory.forEach()   finish
+
 var submitButton = document.getElementById('citySearchButton');
+var citySearchHistory = document.getElementById('citySearchHistory')
+
+let citySearchHistoryStorage = localStorage.getItem("citySearchHistory")
+    ? JSON.parse(localStorage.getItem("citySearchHistory"))
+    : [];
+
 // var todaysForcast = document.getElementById('todaysForcast');
 // var fiveDayForecast = document.getElementById('fiveDayForcast')
 
@@ -17,6 +26,16 @@ function getCityWeather(event) {
     event.preventDefault();
     var city = document.getElementById('cityWeatherSearch').value;
     console.log(city);
+
+    // Save searched city to local storage
+    // citySearchHistoryStorage.push(city);
+    // console.log(citySearchHistoryStorage);
+    // localStorage.setItem("citySearchHistory", JSON.stringify(citySearchHistoryStorage));
+    // listBuilder(city);
+    // city = "";
+    // var pastCity = document.createElement('li');
+    // pastCity.innerHTML
+
     var APIkey = "16614a127342a5014cfcb8d183881e22";
     console.log(APIkey);
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey + "&units=imperial";
@@ -105,6 +124,11 @@ function uVIndexAndForcast(lat, lon) {
                 var forcastList = document.createElement('ul');
                 fiveDayForcastCard.append(forcastList);
 
+                // Add daily weather icon for day [i] to unordered forcast list
+                var dailyIcon = document.createElement('li');
+                dailyIcon.textContent = data.daily[i].weather[0].icon;
+                forcastList.append(dailyIcon);
+
                 // Add daytime tempurature for day[i] to unordered forcast list
                 console.log(data.daily[i].temp.day);
                 var dailyTemp = document.createElement('li');
@@ -144,7 +168,6 @@ function uVIndexAndForcast(lat, lon) {
     //     }
     // }
 };
-
 
 
 
